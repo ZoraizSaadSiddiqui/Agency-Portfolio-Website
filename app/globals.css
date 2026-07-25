@@ -1,0 +1,284 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: Arial, Helvetica, sans-serif;
+}
+
+html {
+  color-scheme: dark;
+  scroll-behavior: auto;
+}
+
+body {
+  background: #070b12;
+  color: #f5f7fa;
+  overflow-x: clip;
+}
+
+::selection {
+  background: rgba(129, 140, 248, 0.32);
+  color: #ffffff;
+}
+
+button,
+a,
+input,
+select,
+textarea {
+  outline-offset: 4px;
+}
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-text-fill-color: #f8fafc;
+  box-shadow: 0 0 0 1000px #0d131e inset;
+  transition: background-color 9999s ease-out;
+}
+
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+.ambient-background {
+  background:
+    radial-gradient(circle at 50% -15%, rgba(37, 59, 112, 0.16), transparent 42%),
+    linear-gradient(180deg, #080c14 0%, #070b12 52%, #080d16 100%);
+}
+
+.ambient-blob,
+.hero-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  will-change: transform, opacity;
+}
+
+.ambient-blob-blue {
+  right: -14rem;
+  top: 5%;
+  width: 46rem;
+  height: 46rem;
+  background: #2563eb;
+  opacity: 0.095;
+  animation: ambient-drift-a 22s ease-in-out infinite alternate;
+}
+
+.ambient-blob-purple {
+  left: -18rem;
+  top: 38%;
+  width: 44rem;
+  height: 44rem;
+  background: #7c3aed;
+  opacity: 0.075;
+  animation: ambient-drift-b 26s ease-in-out infinite alternate;
+}
+
+.ambient-blob-teal {
+  bottom: -15rem;
+  right: 8%;
+  width: 42rem;
+  height: 42rem;
+  background: #0d9488;
+  opacity: 0.07;
+  animation: ambient-drift-c 24s ease-in-out infinite alternate;
+}
+
+.ambient-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(circle at center, black 10%, transparent 78%);
+}
+
+.ambient-grain {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.9'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+  mix-blend-mode: soft-light;
+  opacity: 0.025;
+}
+
+.ambient-vignette {
+  background: radial-gradient(circle at 50% 35%, transparent 25%, rgba(2, 6, 12, 0.42) 100%);
+}
+
+.hero-aurora {
+  inset: -8%;
+  background:
+    radial-gradient(circle at 78% 24%, rgba(59, 130, 246, 0.13), transparent 30%),
+    radial-gradient(circle at 18% 72%, rgba(124, 58, 237, 0.1), transparent 32%),
+    linear-gradient(135deg, rgba(7, 11, 18, 0.65), rgba(10, 16, 28, 0.2));
+  will-change: transform;
+  animation: aurora-drift 18s ease-in-out infinite alternate;
+}
+
+.hero-blob-blue {
+  right: -8rem;
+  top: 2%;
+  width: 34rem;
+  height: 34rem;
+  background: #2563eb;
+  opacity: 0.2;
+  animation: hero-drift-a 16s ease-in-out infinite alternate;
+}
+
+.hero-blob-purple {
+  left: 18%;
+  top: 34%;
+  width: 30rem;
+  height: 30rem;
+  background: #7c3aed;
+  opacity: 0.14;
+  animation: hero-drift-b 19s ease-in-out infinite alternate;
+}
+
+.hero-blob-teal {
+  bottom: -12rem;
+  right: 24%;
+  width: 28rem;
+  height: 28rem;
+  background: #0d9488;
+  opacity: 0.12;
+  animation: hero-drift-c 18s ease-in-out infinite alternate;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+  animation: grid-drift 24s linear infinite;
+}
+
+.project-perspective {
+  perspective: 1100px;
+}
+
+.project-preview {
+  background-color: #27272a;
+}
+
+.project-preview-1 {
+  background-image:
+    radial-gradient(circle at 75% 18%, rgba(129, 140, 248, 0.75), transparent 38%),
+    linear-gradient(140deg, #312e81, #18181b 70%);
+}
+
+.project-preview-2 {
+  background-image:
+    radial-gradient(circle at 22% 20%, rgba(45, 212, 191, 0.6), transparent 36%),
+    linear-gradient(140deg, #134e4a, #18181b 72%);
+}
+
+.project-preview-3 {
+  background-image:
+    radial-gradient(circle at 76% 70%, rgba(244, 114, 182, 0.55), transparent 38%),
+    linear-gradient(140deg, #701a75, #18181b 72%);
+}
+
+.founder-placeholder {
+  background-image:
+    radial-gradient(circle at 70% 22%, rgba(99, 102, 241, 0.24), transparent 34%),
+    linear-gradient(145deg, #18202d, #0d131d);
+}
+
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(-1.5%, -1%, 0) scale(1);
+  }
+  100% {
+    transform: translate3d(2%, 1.5%, 0) scale(1.04);
+  }
+}
+
+@keyframes grid-drift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(48px, 48px, 0);
+  }
+}
+
+@keyframes hero-drift-a {
+  from {
+    transform: translate3d(0, -4%, 0) scale(0.92);
+  }
+  to {
+    transform: translate3d(-13%, 12%, 0) scale(1.08);
+  }
+}
+
+@keyframes hero-drift-b {
+  from {
+    transform: translate3d(-8%, 3%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(11%, -9%, 0) scale(1.12);
+  }
+}
+
+@keyframes hero-drift-c {
+  from {
+    transform: translate3d(6%, 5%, 0) scale(0.94);
+  }
+  to {
+    transform: translate3d(-9%, -8%, 0) scale(1.06);
+  }
+}
+
+@keyframes ambient-drift-a {
+  from {
+    transform: translate3d(0, -3%, 0) scale(0.96);
+    opacity: 0.075;
+  }
+  to {
+    transform: translate3d(-12%, 10%, 0) scale(1.08);
+    opacity: 0.11;
+  }
+}
+
+@keyframes ambient-drift-b {
+  from {
+    transform: translate3d(-4%, 4%, 0) scale(1);
+    opacity: 0.06;
+  }
+  to {
+    transform: translate3d(14%, -10%, 0) scale(1.12);
+    opacity: 0.09;
+  }
+}
+
+@keyframes ambient-drift-c {
+  from {
+    transform: translate3d(5%, 8%, 0) scale(0.94);
+    opacity: 0.055;
+  }
+  to {
+    transform: translate3d(-10%, -7%, 0) scale(1.08);
+    opacity: 0.085;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-aurora,
+  .hero-grid,
+  .hero-blob,
+  .ambient-blob {
+    animation: none !important;
+  }
+
+  .process-progress {
+    transform: none !important;
+  }
+}
