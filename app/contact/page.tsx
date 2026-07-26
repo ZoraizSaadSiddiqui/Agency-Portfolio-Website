@@ -5,7 +5,7 @@ import { Container } from "@/components/ui/Container";
 import { Footer } from "@/components/layout/Footer";
 import { Navbar } from "@/components/layout/Navbar";
 import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
-import { contactFaqLinks } from "@/data/site-content";
+import { companyInfo, contact, contactFaqLinks } from "@/data/site-content";
 import { AnimatePresence, motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
@@ -115,8 +115,15 @@ export default function ContactPage() {
 
     setStatus("loading");
 
-    const accessKey =
-      process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY;
+
+    if (!accessKey) {
+      setStatus("error");
+      setErrorMessage(
+        "The contact form is not configured yet. Please email us directly."
+      );
+      return;
+    }
 
     const payload = {
       access_key: accessKey,
@@ -131,7 +138,7 @@ export default function ContactPage() {
     };
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch(contact.formEndpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -403,7 +410,7 @@ export default function ContactPage() {
 
               <div className="mt-8 border-t border-white/10 pt-6">
                 <p className="text-xs font-medium uppercase tracking-wider text-slate-500 mb-4">
-                  Explore Specialized Teams
+                  Explore Our Solutions
                 </p>
                 <div className="space-y-3">
                   {contactFaqLinks.map((item) => (
@@ -460,8 +467,8 @@ export default function ContactPage() {
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-indigo-400">
                   Email Us
                 </h3>
-                <a href="mailto:info@agency.com" className="mt-2 text-sm text-slate-300 hover:text-indigo-400 transition-colors">
-                  info@agency.com
+                <a href={`mailto:${companyInfo.email}`} className="mt-2 text-sm text-slate-300 hover:text-indigo-400 transition-colors">
+                  {companyInfo.email}
                 </a>
               </div>
 
@@ -475,8 +482,8 @@ export default function ContactPage() {
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-indigo-400">
                   Speak To Us
                 </h3>
-                <a href="tel:+923132471870" className="mt-2 text-sm text-slate-300 hover:text-indigo-400 transition-colors">
-                  +92 313 2471870
+                <a href={`tel:${companyInfo.phone}`} className="mt-2 text-sm text-slate-300 hover:text-indigo-400 transition-colors">
+                  {companyInfo.formattedPhone}
                 </a>
               </div>
             </div>

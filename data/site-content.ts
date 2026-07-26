@@ -9,32 +9,29 @@ export const companyInfo = {
 } as const;
 
 export const footerQuickLinks = [
-  { label: "Web Application", href: "#services" },
-  { label: "App Development", href: "#services" },
-  { label: "Desktop Application", href: "#services" },
-  { label: "Game Development", href: "#services" },
-  { label: "Branding", href: "#services" },
-  { label: "Application Security", href: "#services" },
-  { label: "Social Media Marketing", href: "#services" },
+  { label: "Business Automation", href: "/#services" },
+  { label: "COD Automation", href: "/#services" },
+  { label: "Web Development", href: "/#services" },
+  { label: "App Development", href: "/#services" },
+  { label: "AI / LLM Solutions", href: "/#services" },
+  { label: "RAG Systems", href: "/#services" },
+  { label: "Computer Vision", href: "/#services" },
+  { label: "Data Engineering", href: "/#services" },
 ] as const;
 
 export const footerCompanyLinks = [
-  { label: "Company", href: "#about" },
-  { label: "Blog", href: "#" },
+  { label: "Company", href: "/#about" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Our Products", href: "#projects" },
-  { label: "Privacy Policy", href: "#" },
-  { label: "Terms & Conditions", href: "#" },
-  { label: "Refund Policy", href: "#" },
+  { label: "Our Products", href: "/#projects" },
   { label: "Hire An Expert", href: "/contact" },
 ] as const;
 
 // ─── Navigation ───────────────────────────────────────────
 export const navigation = [
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
-  { label: "Process", href: "#process" },
-  { label: "About", href: "#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Process", href: "/#process" },
+  { label: "About", href: "/#about" },
   { label: "Contact", href: "/contact" },
 ] as const;
 
@@ -51,13 +48,13 @@ export const megaMenu = [
       {
         label: "Web Development",
         description: "Fast, focused websites built to support growth.",
-        href: "#services",
+        href: "/#services",
         icon: "code" as const,
       },
       {
         label: "Business Automation",
         description: "Reliable workflows that remove repetitive work.",
-        href: "#services",
+        href: "/#services",
         icon: "automation" as const,
       },
     ],
@@ -68,13 +65,13 @@ export const megaMenu = [
       {
         label: "COD Order Automation",
         description: "Order validation, tracking, and team updates.",
-        href: "#projects",
+        href: "/#projects",
         icon: "orders" as const,
       },
       {
         label: "View all projects",
         description: "See the systems and websites we have shaped.",
-        href: "#projects",
+        href: "/#projects",
         icon: "projects" as const,
       },
     ],
@@ -85,13 +82,13 @@ export const megaMenu = [
       {
         label: "Our process",
         description: "From first audit to handoff and support.",
-        href: "#process",
+        href: "/#process",
         icon: "process" as const,
       },
       {
         label: "About the founders",
         description: "Meet the people behind the work.",
-        href: "#about",
+        href: "/#about",
         icon: "people" as const,
       },
     ],
@@ -297,13 +294,11 @@ export const contact = {
   heading: "Tell us what is slowing your business down",
   description:
     "Share a little about your business and the process or website you want to improve. We will reply with a practical next step.",
-  formEndpoint: "",
-  email: "info@agency.com",
-  phone: "+92 313 2471870",
+  formEndpoint: "https://api.web3forms.com/submit",
 } as const;
 
 export const contactFaqLinks = [
-  { title: "Job Seekers", href: "#" },
-  { title: "Talent Consulting", href: "#" },
-  { title: "Project Management", href: "#" },
+  { title: "Business Automation", href: "/#services" },
+  { title: "Web Development", href: "/#services" },
+  { title: "AI / LLM Solutions", href: "/#services" },
 ] as const;

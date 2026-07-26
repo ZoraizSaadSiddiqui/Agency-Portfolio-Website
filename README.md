@@ -1,4 +1,4 @@
-# Agency portfolio website
+# Agency Portfolio Website
 
 A static, single-page marketing site for an automation and web development
 agency. Built with Next.js App Router, TypeScript, and Tailwind CSS.
@@ -14,28 +14,32 @@ npm run dev
 
 Open [http://localhost:3001](http://localhost:3001).
 
-## Editing the site
+## Content and configuration
 
-- Update page copy, services, projects, process steps, founder bios, and the form
-  endpoint in `content/site-content.ts`.
-- Update each section's markup in `components/`.
-- Replace `Agency Name` in the navbar and footer before launch.
-- Set `contact.formEndpoint` to the third-party form action URL when it is ready.
+- Update all site copy, cards, navigation, links, and contact details in
+  `data/site-content.ts`. It is the single source of truth for content.
+- Replace the placeholder business email, phone number, website URL, social URLs,
+  and address before launch.
+- Copy `.env.example` to `.env.local` and set `NEXT_PUBLIC_WEB3FORMS_KEY` to enable
+  contact-form delivery through Web3Forms.
+- Update component layout and styling in `components/` only when changing the UI.
 
-## Animation system
+## Project structure
 
-- `components/motion/smooth-scroll-provider.tsx` owns Lenis and keeps it synced
-  with GSAP ScrollTrigger.
-- `components/motion/custom-cursor.tsx` renders the fine-pointer cursor accent.
-- `components/motion/magnetic-link.tsx` contains the reusable magnetic CTA.
-- Framer Motion handles component entrances and hover interactions.
-- GSAP ScrollTrigger drives the process timeline's scroll-linked progress.
-- Reduced-motion preferences disable smooth scrolling and simplify or remove
-  non-essential movement.
+- `app/` contains routes, global styles, and metadata.
+- `components/effects/` contains visual and motion behavior.
+- `components/layout/` contains shared navigation and footer UI.
+- `components/sections/` contains page sections.
+- `components/ui/` contains reusable presentational components.
+- `data/site-content.ts` contains all editable site content.
+- `lib/` contains shared helpers and `types/` contains shared TypeScript types.
 
-The contact form submits with `fetch` so it can show loading, failure, and
-success states without a hard page navigation. The third-party form service
-must accept cross-origin form submissions and return a successful HTTP status.
+## Contact form
+
+The contact page submits directly to Web3Forms and shows loading, success, and
+failure states without a page navigation. If the Web3Forms key is missing, the
+form shows a clear setup message and visitors can still use the displayed email
+and phone links.
 
 ## Available scripts
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { Container } from "@/components/ui/Container";
-import { megaMenu, mobilePrimaryLinks } from "@/data/site-content";
+import { companyInfo, megaMenu, mobilePrimaryLinks } from "@/data/site-content";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -154,7 +154,7 @@ export function Navbar() {
           onClick={closeAll}
           className="rounded-md font-semibold text-white outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b12]"
         >
-          Agency Name
+          {companyInfo.name}
         </Link>
 
         {/* Desktop nav */}
@@ -162,15 +162,16 @@ export function Navbar() {
           aria-label="Primary navigation"
           className="hidden items-center gap-6 text-sm text-slate-300 lg:flex"
         >
-          <Link href="/" onClick={closeAll} className="rounded-md outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b12]">
-            Home
-          </Link>
-          <Link href="/#projects" onClick={closeAll} className="rounded-md outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b12]">
-            Projects
-          </Link>
-          <Link href="/#process" onClick={closeAll} className="rounded-md outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b12]">
-            Process
-          </Link>
+          {mobilePrimaryLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              onClick={closeAll}
+              className="rounded-md outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b12]"
+            >
+              {link.label}
+            </Link>
+          ))}
           <button
             type="button"
             aria-expanded={isExploreOpen}

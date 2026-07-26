@@ -14,7 +14,6 @@ type ProjectCardProps = {
   project: ProjectItem;
   index: number;
 };
-
 export function ProjectCard({ project, index }: ProjectCardProps) {
   const reduceMotion = useReducedMotion();
   const rawRotateX = useMotionValue(0);
@@ -153,7 +152,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               className="inline-flex items-center font-medium text-white hover:text-indigo-300 transition-colors"
               aria-label={`View details for ${project.name}`}
             >
-              View details <span aria-hidden="true" className="ml-2">↗</span>
+              View Link <span aria-hidden="true" className="ml-2">↗</span>
             </Link>
           </div>
         </div>
