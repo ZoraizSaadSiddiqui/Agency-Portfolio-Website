@@ -300,7 +300,7 @@ export function Footer() {
           whileInView="visible"
           viewport={{ once: true, margin: "-80px" }}
           variants={fadeUp}
-          className="relative mb-20 overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-indigo-950/60 via-[#0e1626]/80 to-[#111927]/80 p-8 shadow-[0_0_80px_-20px_rgba(99,102,241,0.4)] sm:p-12"
+          className="relative mb-20 overflow-hidden rounded-[2rem] border border-white/10 bg-gradient-to-br from-indigo-950/60 via-[#0e1626]/80 to-[#111927]/80 p-5 shadow-[0_0_80px_-20px_rgba(99,102,241,0.4)] sm:p-12"
         >
           <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full border border-indigo-400/20" />
           <div aria-hidden="true" className="pointer-events-none absolute -right-6 -top-6 h-32 w-32 rounded-full border border-purple-400/20" />
@@ -318,10 +318,10 @@ export function Footer() {
                 Transform your digital presence and streamline business operations with our engineering experts.
               </p>
             </div>
-            <div className="flex flex-nowrap gap-3">
+            <div className="flex w-full flex-nowrap gap-2 sm:w-auto sm:gap-3">
               <Link
                 href="/contact"
-                className="group inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-5 py-3 font-semibold text-white shadow-lg shadow-indigo-600/30 outline-none transition-all duration-200 hover:shadow-indigo-500/50 focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111927] sm:px-6"
+                className="group inline-flex min-w-0 flex-1 items-center justify-center gap-2 whitespace-nowrap rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 px-3 py-3 text-sm font-semibold text-white shadow-lg shadow-indigo-600/30 outline-none transition-all duration-200 hover:shadow-indigo-500/50 focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111927] sm:flex-none sm:px-6 sm:text-base"
               >
                 Contact Us
                 <ArrowIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -330,7 +330,7 @@ export function Footer() {
                 href={companyInfo.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex shrink-0 items-center justify-center whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-5 py-3 font-semibold text-white outline-none backdrop-blur-sm transition-colors duration-200 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111927] sm:px-6"
+                className="inline-flex min-w-0 flex-1 items-center justify-center whitespace-nowrap rounded-full border border-white/15 bg-white/5 px-3 py-3 text-sm font-semibold text-white outline-none backdrop-blur-sm transition-colors duration-200 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#111927] sm:flex-none sm:px-6 sm:text-base"
               >
                 Talk Now
               </a>

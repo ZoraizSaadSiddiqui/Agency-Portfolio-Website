@@ -115,22 +115,33 @@ export function Navbar() {
   };
 
   const renderMegaMenuGrid = () => (
-    <div className="grid gap-6 lg:grid-cols-3 lg:gap-5">
-      {megaMenu.map((category) => (
-        <div key={category.title}>
-          <p className="mb-3 text-xs font-medium uppercase tracking-[0.16em] text-slate-500">
-            {category.title}
-          </p>
-          <div className="space-y-2">
+    <div className="grid gap-3 lg:grid-cols-3 lg:gap-4">
+      {megaMenu.map((category, categoryIndex) => (
+        <div
+          key={category.title}
+          className="rounded-2xl border border-white/8 bg-white/[0.025] p-3.5 transition-colors duration-300 hover:border-indigo-400/20 hover:bg-white/[0.04] lg:p-4"
+        >
+          <div className="mb-3 flex items-center gap-2.5 px-1">
+            <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500/25 to-purple-500/20 text-[11px] font-bold text-indigo-200 ring-1 ring-indigo-400/20">
+              0{categoryIndex + 1}
+            </span>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-indigo-200">
+              {category.title}
+            </p>
+          </div>
+          <div className="space-y-1.5">
             {category.items.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
                 onClick={closeAll}
-                className="block rounded-2xl border border-transparent px-3 py-2.5 outline-none transition-colors hover:border-white/10 hover:bg-white/[0.045] focus-visible:border-indigo-400/30 focus-visible:bg-white/[0.045] focus-visible:ring-2 focus-visible:ring-indigo-400/60"
+                className="group/item block rounded-xl border border-transparent px-3 py-3 outline-none transition-all duration-200 hover:border-indigo-400/20 hover:bg-indigo-500/10 focus-visible:border-indigo-400/30 focus-visible:bg-indigo-500/10 focus-visible:ring-2 focus-visible:ring-indigo-400/60"
               >
-                <span className="block font-medium text-white">
+                <span className="flex items-center justify-between gap-3 font-medium text-white">
                   {item.label}
+                  <span aria-hidden="true" className="text-indigo-300 opacity-0 transition-all duration-200 group-hover/item:translate-x-0.5 group-hover/item:opacity-100">
+                    →
+                  </span>
                 </span>
                 <span className="mt-0.5 block text-sm leading-5 text-slate-400">
                   {item.description}
@@ -177,7 +188,11 @@ export function Navbar() {
             aria-expanded={isExploreOpen}
             aria-controls="desktop-explore-menu"
             onClick={() => setIsExploreOpen((current) => !current)}
-            className="inline-flex items-center gap-1.5 rounded-md outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b12]"
+            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 outline-none transition-all duration-200 focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#070b12] ${
+              isExploreOpen
+                ? "border-indigo-400/40 bg-indigo-500/15 text-white shadow-lg shadow-indigo-950/30"
+                : "border-transparent text-slate-300 hover:border-white/10 hover:bg-white/5 hover:text-white"
+            }`}
           >
             Explore
             <motion.span
@@ -248,8 +263,9 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -8, scale: 0.98 }}
             transition={reduceMotion ? { duration: 0.12 } : { duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-x-0 top-full z-50 mx-auto hidden w-[min(72rem,calc(100vw-3rem))] rounded-3xl border border-white/10 bg-[#0b111c] p-7 shadow-2xl shadow-black/50 lg:top-[calc(100%+0.75rem)] lg:block"
+            className="absolute inset-x-0 top-full z-50 mx-auto hidden w-[min(72rem,calc(100vw-3rem))] overflow-hidden rounded-3xl border border-white/10 bg-[#0b111c] p-3 shadow-2xl shadow-black/50 lg:top-[calc(100%+0.75rem)] lg:block"
           >
+            <div aria-hidden="true" className="pointer-events-none absolute inset-x-16 top-0 h-px bg-gradient-to-r from-transparent via-indigo-400/70 to-transparent" />
             {renderMegaMenuGrid()}
           </motion.div>
         ) : null}
@@ -275,7 +291,7 @@ export function Navbar() {
               animate={{ opacity: 1, x: 0 }}
               exit={reduceMotion ? { opacity: 0 } : { opacity: 0, x: "100%" }}
               transition={reduceMotion ? { duration: 0.12 } : { duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="fixed inset-y-0 right-0 z-50 flex h-[100dvh] w-[60%] min-w-[280px] flex-col overflow-hidden border-l border-white/10 bg-[#0b111c]/95 shadow-2xl shadow-black/60 backdrop-blur-2xl lg:hidden"
+              className="fixed inset-y-0 right-0 z-50 flex h-[100dvh] w-[min(22rem,88vw)] flex-col overflow-hidden border-l border-white/10 bg-[#0b111c]/95 shadow-2xl shadow-black/60 backdrop-blur-2xl lg:hidden"
             >
               {/* Soft ambient glow for a bit of depth */}
               <div

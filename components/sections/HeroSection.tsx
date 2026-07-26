@@ -75,7 +75,7 @@ export function HeroSection() {
             variants={container}
             initial={reduceMotion ? "visible" : "hidden"}
             animate="visible"
-            className="mt-5 text-5xl font-semibold leading-[1.05] tracking-[-0.045em] sm:text-5xl lg:text-6xl"
+            className="mt-5 text-4xl font-semibold leading-[1.05] tracking-[-0.045em] sm:text-5xl lg:text-6xl"
           >
             {lines.map((lineWords, lineIndex) => (
               <span
