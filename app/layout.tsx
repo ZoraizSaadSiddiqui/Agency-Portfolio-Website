@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "lenis/dist/lenis.css";
 import "./globals.css";
-import { CustomCursor } from "@/components/motion/custom-cursor";
-import { SmoothScrollProvider } from "@/components/motion/smooth-scroll-provider";
+import { CustomCursor } from "@/components/effects/CustomCursor";
+import { SmoothScrollProvider } from "@/components/effects/SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: {

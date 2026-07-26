@@ -1,11 +1,12 @@
 "use client";
 
-import { AmbientBackground } from "@/components/ambient-background";
-import { Container } from "@/components/container";
-import { Footer } from "@/components/footer";
-import { Header } from "@/components/header";
-import { WhatsAppButton } from "@/components/whatsapp-button";
-import { AnimatePresence, motion, useReducedMotion, type Variants } from "framer-motion";
+import { AmbientBackground } from "@/components/effects/AmbientBackground";
+import { Container } from "@/components/ui/Container";
+import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/components/layout/Navbar";
+import { WhatsAppButton } from "@/components/ui/WhatsAppButton";
+import { contactFaqLinks } from "@/data/site-content";
+import { AnimatePresence, motion, type Variants } from "framer-motion";
 import Link from "next/link";
 import { useState, type FormEvent } from "react";
 
@@ -60,7 +61,6 @@ const wordVariants: Variants = {
 };
 
 export default function ContactPage() {
-  const reduceMotion = useReducedMotion();
   const [formData, setFormData] = useState<FormDataState>(initialFormState);
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -162,7 +162,7 @@ export default function ContactPage() {
   return (
     <>
       <AmbientBackground />
-      <Header />
+      <Navbar />
       <main className="relative z-10 py-16 sm:py-24">
         <Container>
           {/* Section 1 — Hero */}
@@ -406,11 +406,7 @@ export default function ContactPage() {
                   Explore Specialized Teams
                 </p>
                 <div className="space-y-3">
-                  {[
-                    { title: "Job Seekers", href: "#" },
-                    { title: "Talent Consulting", href: "#" },
-                    { title: "Project Management", href: "#" },
-                  ].map((item) => (
+                  {contactFaqLinks.map((item) => (
                     <a
                       key={item.title}
                       href={item.href}

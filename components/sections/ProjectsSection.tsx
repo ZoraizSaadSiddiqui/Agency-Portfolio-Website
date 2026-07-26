@@ -1,7 +1,7 @@
-import { Container } from "@/components/container";
-import { ProjectCard } from "@/components/project-card";
-import { SectionHeading } from "@/components/section-heading";
-import { projects } from "@/content/site-content";
+import { Container } from "@/components/ui/Container";
+import { ProjectCard } from "@/components/ui/ProjectCard";
+import { SectionHeading } from "@/components/ui/SectionHeading";
+import { projects } from "@/data/site-content";
 
 export function ProjectsSection() {
   return (

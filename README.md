@@ -19,7 +19,7 @@ Open [http://localhost:3001](http://localhost:3001).
 - Update page copy, services, projects, process steps, founder bios, and the form
   endpoint in `content/site-content.ts`.
 - Update each section's markup in `components/`.
-- Replace `Agency Name` in the header and footer before launch.
+- Replace `Agency Name` in the navbar and footer before launch.
 - Set `contact.formEndpoint` to the third-party form action URL when it is ready.
 
 ## Animation system

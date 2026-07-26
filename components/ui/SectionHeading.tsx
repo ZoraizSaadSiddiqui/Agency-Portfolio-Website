@@ -1,8 +1,4 @@
-type SectionHeadingProps = {
-  eyebrow: string;
-  heading: string;
-  description?: string;
-};
+import type { SectionHeadingProps } from "@/types";
 
 export function SectionHeading({
   eyebrow,

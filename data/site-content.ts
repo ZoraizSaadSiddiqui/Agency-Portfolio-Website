@@ -1,10 +1,48 @@
+// ─── Company & Footer Helpers ──────────────────────────────
+export const companyInfo = {
+  name: "Agency",
+  email: "info@agency.com",
+  phone: "+92 313 2471870",
+  formattedPhone: "+92 313 2471870",
+  whatsappUrl: "https://wa.me/923132471870",
+  websiteUrl: "https://agency.com",
+} as const;
+
+export const footerQuickLinks = [
+  { label: "Web Application", href: "#services" },
+  { label: "App Development", href: "#services" },
+  { label: "Desktop Application", href: "#services" },
+  { label: "Game Development", href: "#services" },
+  { label: "Branding", href: "#services" },
+  { label: "Application Security", href: "#services" },
+  { label: "Social Media Marketing", href: "#services" },
+] as const;
+
+export const footerCompanyLinks = [
+  { label: "Company", href: "#about" },
+  { label: "Blog", href: "#" },
+  { label: "Contact Us", href: "/contact" },
+  { label: "Our Products", href: "#projects" },
+  { label: "Privacy Policy", href: "#" },
+  { label: "Terms & Conditions", href: "#" },
+  { label: "Refund Policy", href: "#" },
+  { label: "Hire An Expert", href: "/contact" },
+] as const;
+
+// ─── Navigation ───────────────────────────────────────────
 export const navigation = [
   { label: "Services", href: "#services" },
   { label: "Projects", href: "#projects" },
   { label: "Process", href: "#process" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "/contact" },
-];
+] as const;
+
+export const mobilePrimaryLinks = [
+  { label: "Home", href: "/" },
+  { label: "Projects", href: "/#projects" },
+  { label: "Process", href: "/#process" },
+] as const;
 
 export const megaMenu = [
   {
@@ -14,13 +52,13 @@ export const megaMenu = [
         label: "Web Development",
         description: "Fast, focused websites built to support growth.",
         href: "#services",
-        icon: "code",
+        icon: "code" as const,
       },
       {
         label: "Business Automation",
         description: "Reliable workflows that remove repetitive work.",
         href: "#services",
-        icon: "automation",
+        icon: "automation" as const,
       },
     ],
   },
@@ -31,13 +69,13 @@ export const megaMenu = [
         label: "COD Order Automation",
         description: "Order validation, tracking, and team updates.",
         href: "#projects",
-        icon: "orders",
+        icon: "orders" as const,
       },
       {
         label: "View all projects",
         description: "See the systems and websites we have shaped.",
         href: "#projects",
-        icon: "projects",
+        icon: "projects" as const,
       },
     ],
   },
@@ -48,18 +86,19 @@ export const megaMenu = [
         label: "Our process",
         description: "From first audit to handoff and support.",
         href: "#process",
-        icon: "process",
+        icon: "process" as const,
       },
       {
         label: "About the founders",
         description: "Meet the people behind the work.",
         href: "#about",
-        icon: "people",
+        icon: "people" as const,
       },
     ],
   },
 ] as const;
 
+// ─── Hero ─────────────────────────────────────────────────
 export const hero = {
   eyebrow: "Automation + web development",
   heading:
@@ -70,8 +109,9 @@ export const hero = {
     label: "Book a free automation audit",
     href: "/contact",
   },
-};
+} as const;
 
+// ─── Services ─────────────────────────────────────────────
 export const services = [
   {
     icon: "automation",
@@ -166,35 +206,41 @@ export const services = [
       "Data Warehousing",
     ],
   },
-];
+] as const;
 
+// ─── Projects ─────────────────────────────────────────────
 export const projects = [
   {
-    name: "COD Order Automation",
+    name: "Handyman App",
     problem:
-      "A cash-on-delivery retailer was manually confirming and tracking every incoming order.",
+      "A home-services provider in Saudi Arabia needed a way for customers to find and book verified plumbers, electricians, and AC technicians without relying on phone calls or word of mouth.",
     result:
-      "A centralized workflow now validates orders, updates statuses, and keeps the team informed.",
-    detailsHref: "#contact",
+      "A cross-platform customer app that matches users with nearby professionals by location, handles secure in-app communication, and manages bookings and payments end to end.",
+    detailsHref:
+      "https://play.google.com/store/apps/details?id=com.hadyman.customer_app",
+    link: "https://play.google.com/store/apps/details?id=com.hadyman.customer_app",
   },
   {
-    name: "Service Business Lead Pipeline",
+    name: "Meharstar Enterprises",
     problem:
-      "New enquiries were scattered across forms, inboxes, and spreadsheets.",
+      "A Sialkot-based sportswear exporter needed a professional B2B storefront to showcase its catalog and handle quote requests from international buyers.",
     result:
-      "Every lead now enters one pipeline with automatic routing and follow-up reminders.",
-    detailsHref: "#contact",
+      "A full export-ready website with category-driven product browsing, request-quote flows, and account/cart functionality, now serving buyers across the Middle East, Europe, and the USA.",
+    detailsHref: "https://meharstarenterprises.com",
+    link: "https://meharstarenterprises.com",
   },
   {
-    name: "Consultancy Website Rebuild",
+    name: "Red Hex Industries",
     problem:
-      "An outdated website made the offer difficult to understand and hard to update.",
+      "A Lahore-based custom garment manufacturer needed an e-commerce storefront to sell across multiple product lines and take direct wholesale and retail orders.",
     result:
-      "A focused, responsive site now explains the service clearly and supports new campaigns.",
-    detailsHref: "#contact",
+      "A multi-category online store covering sportswear, gymwear, safety wear, and jackets, with live cart functionality, a contact/quote workflow, and a brand story section.",
+    detailsHref: "https://red-hex-storefront.vercel.app/",
+    link: "https://red-hex-storefront.vercel.app/",
   },
-];
+] as const;
 
+// ─── Process ──────────────────────────────────────────────
 export const processSteps = [
   {
     title: "Discovery Call",
@@ -216,8 +262,23 @@ export const processSteps = [
     description:
       "You receive documentation, training, and a support plan so the system stays useful after launch.",
   },
-];
+] as const;
 
+export const stats = [
+  { label: "Years of Experience", targetValue: 5, suffix: "+" },
+  { label: "Projects Delivered", targetValue: 120, suffix: "+" },
+  { label: "Happy Clients", targetValue: 99, suffix: "%" },
+] as const;
+
+export const teamMembers = [
+  { name: "Alex Rivers", initials: "AR", bg: "bg-indigo-600" },
+  { name: "Sarah Chen", initials: "SC", bg: "bg-indigo-500" },
+  { name: "Marcus Vance", initials: "MV", bg: "bg-indigo-700" },
+  { name: "Elena Rostova", initials: "ER", bg: "bg-indigo-400" },
+  { name: "David Kim", initials: "DK", bg: "bg-indigo-800" },
+] as const;
+
+// ─── About / Founders ─────────────────────────────────────
 export const founders = [
   {
     name: "Founder Name",
@@ -229,12 +290,20 @@ export const founders = [
     role: "Co-founder · Web Development",
     bio: "Add a short bio covering development experience, product thinking, and the approach this founder brings to building useful websites.",
   },
-];
+] as const;
 
+// ─── Contact ──────────────────────────────────────────────
 export const contact = {
   heading: "Tell us what is slowing your business down",
   description:
     "Share a little about your business and the process or website you want to improve. We will reply with a practical next step.",
-  // Replace this value with your third-party form endpoint when it is ready.
   formEndpoint: "",
-};
+  email: "info@agency.com",
+  phone: "+92 313 2471870",
+} as const;
+
+export const contactFaqLinks = [
+  { title: "Job Seekers", href: "#" },
+  { title: "Talent Consulting", href: "#" },
+  { title: "Project Management", href: "#" },
+] as const;

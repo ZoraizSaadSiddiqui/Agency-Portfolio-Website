@@ -1,7 +1,8 @@
 "use client";
 
-import { Container } from "@/components/container";
-import { contact } from "@/content/site-content";
+import { Container } from "@/components/ui/Container";
+import { contact } from "@/data/site-content";
+import { isValidEmail } from "@/lib/utils";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { useState, type FormEvent } from "react";
 
@@ -35,8 +36,7 @@ export function ContactSection() {
       return;
     }
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
+    if (!email || !isValidEmail(email)) {
       setStatus("error");
       setFeedback("Please enter a valid email address.");
       return;
@@ -44,35 +44,26 @@ export function ContactSection() {
 
     if (!message) {
       setStatus("error");
-      setFeedback("Please enter a message.");
+      setFeedback("Please enter your message.");
       return;
     }
 
     setStatus("loading");
     setFeedback("");
 
-    const accessKey =
-      process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "YOUR_ACCESS_KEY_HERE";
-
-    const payload = {
-      access_key: accessKey,
-      subject: `New Contact Form Submission — Agency Website`,
-      from_name: "Agency Website Contact Section",
-      name,
-      email,
-      replyto: email,
-      business_type: businessType || "N/A",
-      message,
-    };
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({
+          name,
+          email,
+          businessType: businessType || "N/A",
+          message,
+        }),
       });
 
       const result = await response.json();
@@ -80,7 +71,7 @@ export function ContactSection() {
       if (response.ok && result.success) {
         form.reset();
         setStatus("success");
-        setFeedback("Thanks — your message was sent successfully.");
+        setFeedback(result.message || "Thanks — your message was sent successfully.");
       } else {
         throw new Error(result.message || "Form submission failed.");
       }
@@ -102,7 +93,7 @@ export function ContactSection() {
         <div className="grid gap-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
           <div>
             <p className="text-sm font-medium uppercase tracking-wider text-indigo-300">
-              Contact
+              Get In Touch
             </p>
             <h2
               id="contact-heading"
@@ -113,6 +104,29 @@ export function ContactSection() {
             <p className="mt-4 text-base leading-7 text-slate-400 sm:text-lg">
               {contact.description}
             </p>
+
+            <div className="mt-8 space-y-4 text-sm text-slate-300">
+              <div className="flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </span>
+                <a href={`mailto:${contact.email}`} className="hover:text-indigo-300 transition-colors">
+                  {contact.email}
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+                  <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </span>
+                <a href={`tel:${contact.phone}`} className="hover:text-indigo-300 transition-colors">
+                  {contact.phone}
+                </a>
+              </div>
+            </div>
           </div>
 
           <motion.form
@@ -149,7 +163,7 @@ export function ContactSection() {
                   className={fieldClasses}
                 />
                 <label htmlFor="email" className={labelClasses}>
-                  Email
+                  Email address
                 </label>
               </div>
 
@@ -162,7 +176,7 @@ export function ContactSection() {
                   className={fieldClasses}
                 />
                 <label htmlFor="business-type" className={labelClasses}>
-                  Business type
+                  Business type / Industry
                 </label>
               </div>
 
@@ -176,7 +190,7 @@ export function ContactSection() {
                   className={`${fieldClasses} min-h-40 resize-y`}
                 />
                 <label htmlFor="message" className={labelClasses}>
-                  Message
+                  How can we help? (Project details or automation requirements)
                 </label>
               </div>
             </div>
@@ -212,7 +226,7 @@ export function ContactSection() {
                         aria-hidden="true"
                         className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-slate-950/30 border-t-slate-950"
                       />
-                      Sending…
+                      Sending&hellip;
                     </>
                   ) : status === "success" ? (
                     <>

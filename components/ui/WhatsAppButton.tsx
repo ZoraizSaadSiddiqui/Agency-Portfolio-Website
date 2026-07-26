@@ -1,5 +1,6 @@
 "use client";
 
+import { companyInfo } from "@/data/site-content";
 import { motion, useReducedMotion } from "framer-motion";
 
 export function WhatsAppButton() {
@@ -7,7 +8,7 @@ export function WhatsAppButton() {
 
   return (
     <motion.a
-      href="https://wa.me/923132471870"
+      href={companyInfo.whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Chat on WhatsApp"

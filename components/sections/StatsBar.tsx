@@ -1,6 +1,7 @@
 "use client";
 
-import { Container } from "@/components/container";
+import { Container } from "@/components/ui/Container";
+import { stats, teamMembers } from "@/data/site-content";
 import { motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
@@ -23,13 +24,12 @@ function StatItem({
 
   useEffect(() => {
     if (reduceMotion) {
-      setCount(targetValue);
-      return;
+      const animationFrame = requestAnimationFrame(() => setCount(targetValue));
+      return () => cancelAnimationFrame(animationFrame);
     }
 
     if (!isInView) return;
 
-    let start = 0;
     const duration = 1500; // 1.5s
     const startTime = performance.now();
 
@@ -66,14 +66,6 @@ function StatItem({
   );
 }
 
-const teamAvatars = [
-  { name: "Alex Rivers", initials: "AR", bg: "bg-indigo-600" },
-  { name: "Sarah Chen", initials: "SC", bg: "bg-indigo-500" },
-  { name: "Marcus Vance", initials: "MV", bg: "bg-indigo-700" },
-  { name: "Elena Rostova", initials: "ER", bg: "bg-indigo-400" },
-  { name: "David Kim", initials: "DK", bg: "bg-indigo-800" },
-];
-
 export function StatsBar() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
@@ -94,27 +86,14 @@ export function StatsBar() {
           <div className="flex flex-col items-center justify-between gap-8 lg:flex-row lg:gap-12">
             {/* Left side: Stats */}
             <div className="grid w-full grid-cols-3 gap-4 sm:gap-8 lg:w-auto">
-              <StatItem
-                label="Years of Experience"
-                targetValue={5}
-                suffix="+"
-                reduceMotion={reduceMotion}
-                isInView={isInView}
-              />
-              <StatItem
-                label="Projects Delivered"
-                targetValue={120}
-                suffix="+"
-                reduceMotion={reduceMotion}
-                isInView={isInView}
-              />
-              <StatItem
-                label="Happy Clients"
-                targetValue={99}
-                suffix="%"
-                reduceMotion={reduceMotion}
-                isInView={isInView}
-              />
+              {stats.map((stat) => (
+                <StatItem
+                  key={stat.label}
+                  {...stat}
+                  reduceMotion={reduceMotion}
+                  isInView={isInView}
+                />
+              ))}
             </div>
 
             {/* Right side: Team */}
@@ -123,7 +102,7 @@ export function StatsBar() {
                 Our Team
               </p>
               <div className="mt-3 flex items-center -space-x-3 overflow-hidden">
-                {teamAvatars.map((avatar, idx) => (
+                {teamMembers.map((avatar, idx) => (
                   <motion.div
                     key={avatar.name}
                     initial={reduceMotion ? false : { opacity: 0, scale: 0.7 }}
